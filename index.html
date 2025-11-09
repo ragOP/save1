@@ -147,6 +147,33 @@
       font-size:20px;
       box-shadow:0 8px 0 #111, 0 18px 40px rgba(0,0,0,.1);
       transition:transform .06s ease, box-shadow .06s ease, background .2s ease;
+      position:relative;    /* needed for shimmer pseudo-element */
+      overflow:hidden;      /* clip shimmer to button */
+    }
+
+    /* Shimmer effect */
+    .shimmer { /* apply this class alongside .cta, e.g. <a class="cta shimmer"> */ }
+    .cta.shimmer::after{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.65) 50%,
+      rgba(255,255,255,0) 100%);
+      transform: skewX(-20deg);
+      filter:blur(6px);
+      opacity: 0.95;
+      pointer-events: none;
+      animation: shimmer 1.6s linear infinite;
+    }
+
+    @keyframes shimmer{
+      0%   { left: -60%; }
+      100% { left: 160%; }
     }
     .cta:hover{ background:var(--accent-strong); transform:translateY(1px); box-shadow:0 7px 0 #111, 0 16px 32px rgba(0,0,0,.12); }
     .cta:active{ transform:translateY(2px); box-shadow:0 6px 0 #111, 0 12px 24px rgba(0,0,0,.14); }
@@ -200,28 +227,69 @@
       </div>
 
       <!-- Bullets -->
-      <ul class="list" aria-label="Key points">
-        <li>
-         
-       <span class="check"><i class="fa-solid fa-check"></i></span>
-  
-          <span><strong>100% Free Help.</strong></span>
-        </li>
-        <li>
-     
-   <span class="check"><i class="fa-solid fa-check"></i></span>
-          <span>Takes <strong>5–10 minutes.</strong></span>
-        </li>
-        <li>
-          <span class="check"><i class="fa-solid fa-check"></i></span>
-          <span>Tap below to <strong>CALL NOW!</strong></span>
-        </li>
-      </ul>
+    <ul aria-label="Key points" 
+style="
+  list-style:none;
+  padding-left:60px;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+">
+  <li style="display:flex; align-items:center; gap:10px;">
+    <span style="
+      width:22px;
+      height:22px;
+      border-radius:50%;
+      border:2px solid #d4e8c8;
+      background:#ffffff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    ">
+      <i class="fa-solid fa-check" style="color:#f9c640; font-size:14px;"></i>
+    </span>
+    <span style="font-weight:700;">100% Free Help.</span>
+  </li>
+
+  <li style="display:flex; align-items:center; gap:10px;">
+    <span style="
+      width:22px;
+      height:22px;
+      border-radius:50%;
+      border:2px solid #d4e8c8;
+      background:#ffffff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    ">
+      <i class="fa-solid fa-check" style="color:#f9c640; font-size:14px;"></i>
+    </span>
+    <span>Takes <strong>5–10 minutes.</strong></span>
+  </li>
+
+  <li style="display:flex; align-items:center; gap:10px;">
+    <span style="
+      width:22px;
+      height:22px;
+      border-radius:50%;
+      border:2px solid #d4e8c8;
+      background:#ffffff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    ">
+      <i class="fa-solid fa-check" style="color:#f9c640; font-size:14px;"></i>
+    </span>
+    <span>Tap below to <strong>CALL NOW!</strong></span>
+  </li>
+</ul>
+
 
       <!-- CTA (update number + tel:) -->
       <a
         href="tel:+18311231234"
-        class="cta"
+        class="cta shimmer"
         aria-label="Call (831) 123-1234 now"
         title="Call (831) 123-1234"
       >
