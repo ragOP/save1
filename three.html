@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SaveMax Auto - DriverSaver Style Lander</title>
+
+  <style>
+    :root{
+      --blue:#5aa0f2;
+      --blue-deep:#4b8fe0;
+      --yellow:#fffb5c;
+      --red:#e11d48;
+      --text:#0b0b0b;
+      --muted:#6b7280;
+      --card:#f2f2f2;
+      --white:#ffffff;
+      --radius:12px;
+      --inner:980px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);
+      background:#ffffff;
+    }
+
+    .page{
+      width:100%;
+      background:#fff;
+    }
+    .inner{
+      max-width:var(--inner);
+      margin:0 auto;
+      padding:0 14px;
+    }
+
+    /* ================= HEADER LOGO ================= */
+    header{
+      padding:18px 0 6px;
+      text-align:center;
+      background:#fff;
+    }
+    header img{
+      height:46px;
+      width:auto;
+      object-fit:contain;
+    }
+
+    /* ================= LIVE BAR ================= */
+    .live-wrap{
+      background:var(--yellow);
+      border-radius:0;
+      padding:16px 12px;
+      margin:10px auto 16px;
+      text-align:center;
+      font-weight:900;
+      color:#b91c1c;
+      letter-spacing:.2px;
+      font-size:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .live-dot{
+      width:22px;height:22px;border-radius:999px;
+      background:var(--red);
+      box-shadow:0 0 0 4px rgba(225,29,72,.18);
+      flex:0 0 auto;
+    }
+
+    /* ================= HERO HEADLINE ================= */
+    .hero{
+      padding:8px 0 8px;
+      text-align:center;
+      background:#fff;
+    }
+    .hero h1{
+      margin:0 auto;
+      max-width:860px;
+      font-size:40px;
+      line-height:1.15;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+    .hero .hl{
+      color:var(--blue);
+    }
+
+    /* ================= QUESTION BLOCK ================= */
+    .q-section{
+      padding:18px 0 12px;
+      background:#fff;
+    }
+    .q-card{
+      background:var(--card);
+      border-radius:0;
+      padding:36px 18px 22px;
+      text-align:center;
+      max-width:820px;
+      margin:0 auto;
+    }
+    .q-title{
+      font-size:44px;
+      font-weight:900;
+      color:#1f2937;
+      margin:0 0 22px;
+      letter-spacing:.2px;
+    }
+    .q-btns{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+      max-width:680px;
+      margin:0 auto;
+    }
+    .q-btn{
+      background:var(--blue-deep);
+      color:#fff;
+      font-weight:900;
+      font-size:42px;
+      border:none;
+      border-radius:4px;
+      padding:26px 10px;
+      cursor:pointer;
+      box-shadow:0 8px 18px rgba(0,0,0,.12);
+      transition:.12s ease;
+      letter-spacing:.6px;
+    }
+    .q-btn:hover{filter:brightness(1.05);}
+    .q-btn:active{transform:translateY(1px);}
+
+    /* ================= TESTIMONIALS ================= */
+    .testimonials{
+      padding:18px 0 6px;
+      background:#fff;
+    }
+    .t-card{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:22px;
+      align-items:flex-start;
+      max-width:820px;
+      margin:22px auto;
+      padding:0 6px;
+    }
+    .t-avatar{
+      width:110px;height:110px;border-radius:999px;
+      background:linear-gradient(135deg,#e5e7eb,#cbd5e1);
+      border:6px solid #fff;
+      box-shadow:0 6px 16px rgba(0,0,0,.12);
+      overflow:hidden;
+    }
+    .t-avatar img{
+      width:100%;height:100%;object-fit:cover;display:block;
+    }
+    .t-quote{
+      font-size:22px;
+      line-height:1.55;
+      color:#111827;
+      font-weight:500;
+      margin-top:4px;
+      white-space:pre-line;
+    }
+
+    /* ================= FOOTER DISCLAIMER ================= */
+    footer{
+      padding:10px 0 28px;
+      background:#fff;
+      text-align:center;
+      color:#6b7280;
+      font-size:15px;
+      line-height:1.8;
+    }
+    footer .fine{
+      max-width:820px;
+      margin:0 auto;
+      padding:0 14px;
+      font-size:14px;
+      color:#7b7f87;
+    }
+    footer .copy{
+      margin-top:18px;
+      font-size:15px;
+      color:#6b7280;
+    }
+    footer a{
+      color:#2563eb;
+      font-weight:800;
+      text-decoration:underline;
+    }
+
+    /* ================= MOBILE TUNING ================= */
+    @media (max-width: 640px){
+      .live-wrap{font-size:16px;padding:14px 10px;}
+      .hero h1{font-size:30px;}
+      .q-title{font-size:30px;}
+      .q-btn{font-size:30px;padding:18px 8px;}
+      .t-card{
+        grid-template-columns:88px 1fr;
+        gap:14px;
+      }
+      .t-avatar{width:82px;height:82px;border-width:5px;}
+      .t-quote{font-size:18px;}
+      footer{font-size:13px;}
+      footer .fine{font-size:12.5px;}
+    }
+
+    /* ================= DESKTOP OPTIMIZED ================= */
+    @media (min-width: 900px){
+      header img{height:58px;}
+      .live-wrap{
+        max-width:920px;
+        margin-left:auto;margin-right:auto;
+        font-size:20px;
+      }
+      .hero h1{font-size:52px;}
+      .q-card{padding:52px 22px 34px;}
+      .q-title{font-size:52px;}
+      .q-btns{
+        grid-template-columns:1fr 1fr; /* desktop side-by-side like optimized */
+        gap:22px;
+      }
+      .q-btn{font-size:40px;padding:26px 12px;}
+      .t-quote{font-size:24px;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header class="inner">
+      <!-- <img src="https://www.savemaxauto.org/l.svg" alt="SaveMax Auto Logo"> -->
+    </header>
+
+    <!-- LIVE BAR -->
+    <div class="inner">
+      <div class="live-wrap">
+        <span class="live-dot"></span>
+        <span>LIVE: PROGRAM CLOSES NOVEMBER 23, 2024 AT 5 PM</span>
+      </div>
+    </div>
+
+    <!-- HERO HEADLINE -->
+    <section class="hero inner">
+      <h1>
+        Get <span class="hl">$1497</span> back in <span class="hl">30-Seconds</span>
+        With This<br/>New Rule
+      </h1>
+    </section>
+
+    <!-- QUESTION -->
+    <section class="q-section">
+      <div class="q-card inner">
+        <div class="q-title">Are You Over<br/>The Age Of 25?</div>
+        <div class="q-btns">
+          <button class="q-btn">YES</button>
+          <button class="q-btn">NO</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials inner">
+
+      <div class="t-card">
+        <div class="t-avatar">
+          <!-- placeholder image; replace later -->
+          <img src="https://via.placeholder.com/200x200.png?text=User" alt="User 1">
+        </div>
+        <div class="t-quote">
+          "I've had the same insurance for years. I thought I had a good rate! I took this quiz and got it lowered by $82/month! I wish I had done this sooner!"
+          - Julia M.
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-avatar">
+          <img src="https://via.placeholder.com/200x200.png?text=User" alt="User 2">
+        </div>
+        <div class="t-quote">
+          "I was skeptical about trying yet another way to reduce my bills. But after this quiz showed me how to cut my car insurance by $90 a month, I'm so glad I tried. More money in my pocket each month!"
+          - Lisa S.
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-avatar">
+          <img src="https://via.placeholder.com/200x200.png?text=User" alt="User 3">
+        </div>
+        <div class="t-quote">
+          "Every month, high insurance premiums were draining my budget. I finally decided to take a chance on this quiz, and it saved me $75 a month! It's been a game-changer for my finances!"
+          - Tom H.
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-avatar">
+          <img src="https://via.placeholder.com/200x200.png?text=User" alt="User 4">
+        </div>
+        <div class="t-quote">
+          "Dealing with high car insurance was always a stress point for me. After using this quiz, I'm saving $68 every month. It's a relief to have extra money for other needs!"
+          - Emily R.
+        </div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="fine">
+        Disclaimer: Not all applicants will qualify for savings. Individual results may vary based on personal circumstances and insurance qualifications.
+        <br/><br/>
+        © 2025 savemaxauto.org. All rights reserved.
+        <br/><br/>
+        savemaxauto.org is an online insurance referral site. We match and directly connect consumers with insurance companies and agents across the US. Our site does not provide quotes directly to consumers and is not in any way affiliated with any of the insurance carriers. We do not provide insurance and do not represent any specific insurance provider or automobile company. All trademarks and copyrights are the property of their respective owners. This website contains affiliate marketing links and phone numbers, which means the operators of this site may get paid commission on sales of advertised products or services. savemaxauto.org provides access to independent auto insurance services and acts as an affiliate to these services.
+        <br/><br/>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
