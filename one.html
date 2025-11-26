@@ -64,24 +64,70 @@
       text-align:center;
     }
 
-    .social-proof{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.2px;
-      text-shadow:0 2px 10px rgba(0,0,0,.45);
-      margin-top:6px;
-      flex-wrap:wrap;
-    }
-    .social-proof .dot{
-      width:8px;height:8px;border-radius:50%;
-      background:#22c55e;
-      box-shadow:0 0 0 2px rgba(34,197,94,.35);
-      flex:0 0 auto;
-    }
+   .social-proof{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.2px;
+  text-shadow:0 2px 10px rgba(0,0,0,.45);
+  /* margin-top:10px; */
+  flex-wrap:wrap;
+}
+
+.social-proof .count{
+  font-weight:800;
+}
+
+.social-proof .faces{
+  display:inline-flex;
+  align-items:center;
+  gap:2px;
+}
+
+.social-proof .faces img{
+  height:14px;
+  width:auto;
+  border-radius:999px;
+  object-fit:cover;
+}
+
+/* main headline + subtext */
+.hero h1{
+  margin:18px auto 10px;
+  font-weight:800;
+  line-height:1.16;
+  font-size:26px;
+  text-shadow:0 4px 18px rgba(0,0,0,.6);
+  max-width:19ch; /* keeps breaks tight, like screenshot */
+}
+
+.hero .sub{
+  font-size:13px;
+  font-weight:700;
+  opacity:.98;
+  text-shadow:0 2px 12px rgba(0,0,0,.55);
+}
+
+/* desktop tweak to match layout in screenshot */
+@media (min-width: 900px){
+  .hero h1{
+    font-size:44px;
+    max-width:20ch;
+  }
+
+  .hero .sub{
+    font-size:18px;
+    font-weight:700;
+  }
+
+  .social-proof{
+    font-size:14px;
+  }
+}
+
 
     .hero h1{
       margin:14px auto 6px;
@@ -476,50 +522,62 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
 
-        <div class="hero-content">
-          <div class="social-proof">
-            <span class="dot"></span>
-            <span>86,809 Americans Saved on Auto Insurance</span>
-            <img
-              src="https://autoquotepilot.com/aksh/v1/review-faces.png"
-              alt="Recent users"
-              style="display:inline-block;margin-left:6px;height:20px;vertical-align:middle;border-radius:999px;object-fit:cover;"
-            />
-          </div>
+       <div class="hero-content">
+  <div class="social-proof">
+    <span>
+      <span class="count">96,734</span> Americans Saved on Auto Insurance
+    </span>
+    <span class="faces">
+      <img
+        src="https://autoquotepilot.com/aksh/v1/review-faces.png"
+        alt="Recent users"
+      />
+    </span>
+  </div>
 
-          <h1>
-            Compare Free Quotes &amp; Save Up To 75%<br/>
-            On Your Auto Insurance
-          </h1>
-          <div class="sub">Rates Starting At $1 Per Day In <span id="city">Delhi</span></div>
-          <script>
-          (function(){
-            const el = document.getElementById('city');
-            try {
-              const params = new URLSearchParams(location.search);
-              const q = params.get('city') || params.get('location');
-              if (q) { el.textContent = decodeURIComponent(q); return; }
-            } catch(e){}
+  <h1>
+    Compare Free Quotes &amp;<br />
+    Save Up To 75% On<br />
+    Your Auto Insurance
+  </h1>
 
-            fetch('https://ipapi.co/json/')
-              .then(res => res.ok ? res.json() : Promise.reject())
-              .then(data => {
-                if (data && data.city) el.textContent = data.city;
-              })
-              .catch(() => {});
-          })();
-          </script>
+  <div class="sub">
+    Rates Starting At $1 Per Day In <span id="city">Delhi</span>
+  </div>
 
-          <div class="question-wrap">
-            <div class="question-card">
-              <div class="question-title">Are You Currently Insured?</div>
-              <div class="btn-row">
-                <a class="btn yes" href="https://trk.reliableautopolicy.com/click">YES</a>
-                <a class="btn no" href="https://trk.reliableautopolicy.com/click">NO</a>
-              </div>
-            </div>
-          </div>
-        </div>
+  <script>
+    (function () {
+      const el = document.getElementById("city");
+      try {
+        const params = new URLSearchParams(location.search);
+        const q = params.get("city") || params.get("location");
+        if (q) {
+          el.textContent = decodeURIComponent(q);
+          return;
+        }
+      } catch (e) {}
+
+      fetch("https://ipapi.co/json/")
+        .then((res) => (res.ok ? res.json() : Promise.reject()))
+        .then((data) => {
+          if (data && data.city) el.textContent = data.city;
+        })
+        .catch(() => {});
+    })();
+  </script>
+
+  <!-- keep your question-wrap below as-is -->
+  <div class="question-wrap">
+    <div class="question-card">
+      <div class="question-title">Are You Currently Insured?</div>
+      <div class="btn-row">
+        <a class="btn yes" href="https://trk.reliableautopolicy.com/click">YES</a>
+        <a class="btn no" href="https://trk.reliableautopolicy.com/click">NO</a>
+      </div>
+    </div>
+  </div>
+</div>
+
       </section>
 
       <!-- TRUST LOGOS SLIDER -->
