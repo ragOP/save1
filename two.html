@@ -120,7 +120,7 @@
       background:#fff;
       color:#000;
       border-radius:12px;
-      padding:22px 12px 16px;
+      padding:22px 12px 26px;
       box-shadow:0 12px 30px rgba(0,0,0,.22);
       margin:8px auto 8px;
       width:100%;
@@ -129,8 +129,8 @@
     }
     .q-title{
       font-weight:900;
-      font-size:29px;
-      margin-bottom:10px;
+      font-size:25px;
+      margin-bottom:20px;
        white-space:nowrap;      
     }
     .q-btns{
@@ -156,7 +156,7 @@
     .q-btn:active{transform:translateY(1px);}
 
     .secure{
-      margin:8px 0 0;
+      margin:18px 0 0;
       font-size:11px;
       font-weight:800;
       opacity:.98;
@@ -380,6 +380,33 @@
       .quotes-viewport{height:300px;}
     }
   </style>
+  <script>
+  async function setStateName() {
+    try {
+      // Fetch approximate location using IP-based API
+      const res = await fetch("https://ipapi.co/json/");
+      const data = await res.json();
+
+      let state = data.region || "Your State";
+
+      // Update the hero subtitle text
+      const subEl = document.querySelector(".hero .sub");
+      if (subEl) {
+        subEl.innerHTML = `Rates Starting At $19.99 Per Month In <b>${state}</b>`;
+      }
+    } catch (e) {
+      console.warn("Location lookup failed");
+
+      const subEl = document.querySelector(".hero .sub");
+      if (subEl) {
+        subEl.innerHTML = `Rates Starting At $19.99 Per Month In Your State`;
+      }
+    }
+  }
+
+  setStateName();
+</script>
+
     <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
