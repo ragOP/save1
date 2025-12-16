@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Financial Future</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --ink:#0b1220;
+      --muted:#111827;
+      --muted2:#374151;
+      --line:#d7e3f4;
+      --sky1:#eaf3ff;
+      --sky2:#dbeaff;
+      --card:#ffffff;
+      --shadow:0 10px 30px rgba(2,6,23,.14);
+      --radius:16px;
+      --blue:#1d2f6f;     /* headline blue */
+      --footer:#19307a;   /* footer bar */
+      --green:#3f8f25;    /* buttons */
+      --wrap:980px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:#fff;
+      color:var(--ink);
+    }
+    img{max-width:100%;display:block}
+    a{color:inherit}
+
+    /* Top logo bar */
+    .topbar{
+      background:#fff;
+      border-bottom:1px solid #e6edf7;
+    }
+    .topbar__in{
+      max-width:var(--wrap);
+      margin:0 auto;
+      padding:14px 14px 12px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .topbar__in img{
+      height:46px;
+      width:auto;
+    }
+
+    /* light blue strip behind card (like screenshot) */
+    .sky{
+      background:linear-gradient(180deg,var(--sky1),var(--sky2));
+      border-bottom:1px solid #cfe0f7;
+      padding:14px 0 22px;
+    }
+
+    /* main container */
+    .wrap{
+      max-width:var(--wrap);
+      margin:0 auto;
+      padding:0 14px;
+    }
+
+    /* big white card */
+    .card{
+      background:var(--card);
+      border:2px solid #cfe0f7;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 18px 18px;
+    }
+
+    .headline{
+      font-size:40px;
+      line-height:1.12;
+      letter-spacing:-.02em;
+      font-weight:900;
+      text-align:center;
+      margin:10px 0 16px;
+      color:#0b0b0b;
+    }
+
+    .media{
+      margin:0 auto 18px;
+      width:100%;
+      max-width:720px;
+      border:1px solid #e5e7eb;
+      background:#fff;
+    }
+    .media img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .copy{
+      max-width:760px;
+      margin:0 auto;
+      font-size:20px;
+      line-height:1.5;
+      color:#111;
+      padding:0 6px;
+    }
+    .copy p{margin:0 0 16px}
+    .copy p:last-child{margin-bottom:0}
+
+    /* question block card */
+    .questionWrap{
+      padding:18px 0 0;
+      background:#fff;
+    }
+    .qCard{
+      margin:22px auto 0;
+      max-width:760px;
+      background:#fff;
+      border:2px solid #e6edf7;
+      border-radius:14px;
+      box-shadow:0 12px 28px rgba(2,6,23,.10);
+      padding:26px 18px 26px;
+    }
+    .qTitle{
+      text-align:center;
+      font-weight:900;
+      color:var(--blue);
+      font-size:34px;
+      line-height:1.15;
+      margin-bottom:18px;
+    }
+    .btnCol{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:stretch;
+      max-width:680px;
+      margin:0 auto;
+    }
+    .bigBtn{
+      height:86px;
+      border:none;
+      border-radius:6px;
+      background:var(--green);
+      color:#fff;
+      font-weight:900;
+      font-size:44px;
+      letter-spacing:.01em;
+      cursor:pointer;
+      box-shadow:0 14px 26px rgba(63,143,37,.20);
+      transition:transform .08s ease, filter .12s ease;
+    }
+    .bigBtn:active{transform:translateY(1px)}
+    .bigBtn:hover{filter:brightness(.98)}
+
+    /* footer bar with logo centered */
+    .footer{
+      margin-top:18px;
+      background:var(--footer);
+      padding:26px 14px;
+    }
+    .footer .wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .footer img{
+      height:58px;
+      width:auto;
+      filter:brightness(1.05);
+    }
+
+    /* Mobile tuning to match screenshot proportions */
+    @media (max-width:520px){
+      .topbar__in img{height:44px}
+      .card{padding:16px}
+      .headline{font-size:36px}
+      .copy{font-size:19px}
+      .qTitle{font-size:30px}
+      .bigBtn{height:82px;font-size:42px}
+      .footer img{height:54px}
+    }
+    @media (max-width:380px){
+      .headline{font-size:32px}
+      .copy{font-size:18px}
+      .qTitle{font-size:28px}
+      .bigBtn{height:78px;font-size:40px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP LOGO -->
+  <div class="topbar">
+    <div class="topbar__in">
+      <img
+        src="https://convertri.imgix.net/c836c363-2bde-11ee-b5e1-06326af95a41%2F4c108c17394c613a3c8d52e28edc6579f9bce26b%2Ffuture_financial_6300x.png?auto=compress,format&dpr=2&fit=scale&w=213&h=62"
+        alt="Financial Future"
+        loading="eager"
+      />
+    </div>
+  </div>
+
+  <!-- SKY BACKGROUND + MAIN CARD -->
+  <div class="sky">
+    <div class="wrap">
+      <div class="card">
+
+        <!-- HEADLINE (replace with your compliant copy) -->
+        <h1 class="headline">
+          Americans Can Now Claim a Bailout from Debt Using Legal Contract Loopholes.
+        </h1>
+
+        <!-- GIF -->
+        <div class="media">
+          <img
+            src="https://cdn.convertri.com/c836c363-2bde-11ee-b5e1-06326af95a41%2F8dc346d36c829b7a5230406203905847be6adce7%2FNewsDebtFeb2024-ezgif.com-video-to-gif-converter.gif"
+            alt="News GIF"
+            loading="eager"
+          />
+        </div>
+
+        <!-- BODY TEXT (replace with your compliant copy) -->
+        <div class="copy">
+          <p>
+            Have you ever read the fine print of your credit card contract? Let’s be honest nobody has.
+            Americans can now use legal options to explore debt relief programs for credit cards, loans and more.
+          </p>
+          <p>
+            Results vary by eligibility and provider. This page is informational and not legal/financial advice.
+          </p>
+          <p>
+            If you want to check your options, answer the question below.
+          </p>
+        </div>
+
+        <!-- QUESTION CARD -->
+        <div class="questionWrap">
+          <div class="qCard">
+            <div class="qTitle">Do Have Credit Cards,<br/>Loans or Debt?</div>
+
+            <div class="btnCol">
+              <button class="bigBtn" id="yesBtn" type="button">Yes</button>
+              <button class="bigBtn" id="noBtn" type="button">No</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER LOGO BAR -->
+  <footer class="footer">
+    <div class="wrap">
+      <img
+        src="https://convertri.imgix.net/c836c363-2bde-11ee-b5e1-06326af95a41%2F4c108c17394c613a3c8d52e28edc6579f9bce26b%2Ffuture_financial_6300x.png?auto=compress,format&dpr=2&fit=scale&w=380"
+        alt="Financial Future"
+        loading="lazy"
+      />
+    </div>
+  </footer>
+
+  <script>
+    // wire to next step (change URLs as needed)
+    const nextYes = "question.html?debt=yes";
+    const nextNo  = "question.html?debt=no";
+
+    document.getElementById("yesBtn").addEventListener("click", () => {
+      window.location.href = nextYes;
+    });
+
+    document.getElementById("noBtn").addEventListener("click", () => {
+      window.location.href = nextNo;
+    });
+  </script>
+
+</body>
+</html>
